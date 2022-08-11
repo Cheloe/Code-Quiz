@@ -16,27 +16,42 @@
     <main>
       <container class="timer-box">
         <h2><span id="timer"></span></h2>
+        <div class="score">
+          <h2>Your Score: <span id="user-score"></span></h2>
+      </div>
       </container>
       <container class="quiz-area">
         <!-- This contains the question and four answer buttons -->
         <div class="choices">
             <div id="question"></div>
-            <!-- <h2 class="question"></h2> 
-            <h2 class="question">Question Text <span id="question-text">javascript here</span></h2> -->
-            <!-- I think this will be append child stuff, but placeholder for style -->
             <div id="button-list"></div>
-            <!-- <button class="choice">1. <span id=choice-one></span></button>
-            <button class="choice">2. <span id=choice-two></span></button>
-            <button class="choice">3. <span id=choice-three></span></button>
-            <button class="choice">4. <span id=choice-four></span></button> -->
-            <div class="score">
-                <h3>Your Score: <span id="user-score"></span></h3>
-            </div>
         </div>
-       
-    </container>
-    </main>
+        <!-- This will be an html form -->
+      </container>
+      <container class="highscores">
 
+          <div class="name-input">  
+              <div class = "just-form">
+              <input 
+                id="input-field"
+                type="text" 
+                name="name-input" 
+                placeholder="Type your name to save your score!"
+                >
+              <button id="save-score"> Save My Score </button>
+              </div>
+              <button id="play-again"> Play Again </button>
+
+
+          </div>
+          
+            <div id="saved-scores">
+              <h2>Your Scores</h2>
+              <!-- <h4>Cheryl</h4>
+              <h4>Cheryl</h4> -->
+            </div>
+      </container>
+    </main>
   <script src="./assets/js/script.js"></script>
   </body>
 </html>

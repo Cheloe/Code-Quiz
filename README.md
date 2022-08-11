@@ -25,6 +25,7 @@ gauge my progress compared to my peers
 6. Created a function that appends and displays the question and it's array of answer choices when the start button is pressed
 7. Added functionality for increasing score and clearing question
 8. Added functionality for hiding the start button area when the start button is pressed.
+9. Added high score box and styled same
 
 
 start button

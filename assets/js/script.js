@@ -6,34 +6,46 @@ var startButton = document.getElementById("start-button");
 //when start button is pressed, call the function setTime()
 
 startButton.addEventListener("click", function(){
-
+    console.log(savedScoreArray);
     setTime();
     setScore();
     setQuestion();
     hideIntro();
     showQuiz();
+    showTime();
 })
 
+//These are re-play checkers
+var timeUp = false;
+var replay = false;
 
 //Timer
 
 var timerElement = document.getElementById("timer");
 
+
 function setTime() {
-    var secondsLeft = 5;
+    var secondsLeft = 10;
     timerElement.textContent="Time: " + secondsLeft;
     var timerInterval = setInterval(function(){
         secondsLeft--;
         timerElement.textContent="Time: " + secondsLeft;
-
+        
         if(secondsLeft === 0) {
-            
             // sendMessage()
             timerElement.textContent = "Time's up!";
+            hideQuiz();
+            showScores();
+            saveName();
             clearInterval(timerInterval);
+        } 
+        else if (timeUp === true) {
+            clearInterval(timerInterval);
+            timeUp = false;
         }
     }, 1000);
 }
+
 
 //Score
 
@@ -69,20 +81,13 @@ var questionThree = {
 
 var questionArray = [questionOne, questionTwo, questionThree];
 
-// var startButton = document.getElementById("start-button");
 
-// //when start button is pressed, call the function setTime()
-
-// startButton.addEventListener("click", function(){
-
-//     setTime();
-//     setScore();
-// })
 
 //this is the first position in the questionArray
 var questionIndexPosition = 0;
 
 function setQuestion() {
+
 
         console.log(questionIndexPosition);
 
@@ -101,30 +106,89 @@ function setQuestion() {
             questionButton.className = 'choice';
             questionButton.addEventListener("click", function(event) {
                 var elementTarget = event.target;
-                // console.log("fire");
-                // console.log(elementTarget.textContent);
-                // console.log(nextQuestion.questionCorrect);
+
                 if (elementTarget.textContent === questionArray[questionIndexPosition].questionCorrect){
-                    // console.log("hello");
-                    // console.log(elementTarget.textContent);
-                    // console.log(nextQuestion.questionCorrect);
+                
+                    //SHOW CORRECT/INCORRECT
+
                     clearQuestion();
                     clearAnswers();
                     userScore.textContent++;
                     questionIndexPosition++;
                     //this is manually set to the total index length +1 
+                    
                     if (questionIndexPosition === questionArray.length) {
                         //call something to end the game
                         questionIndexPosition = 0;
-                        return;
+                        timeUp = true; 
+                        hideQuiz();
+                        showScores();
+                        saveName();
+                        playAgain();
+                        //return;
                     } else {
-                    setQuestion();
+                        setQuestion();
                     }
                 }
             })
             document.getElementById('button-list').appendChild(questionButton);
         }     
 }
+
+
+
+// Here I'm working on saving the name to storage
+
+
+function saveName() {
+
+    var saveButton = document.querySelector("#save-score");
+    saveButton.addEventListener("click", saveClick);
+    
+}
+
+var savedScoreArray = []; 
+var updatedScoreArray;
+
+function saveClick () {
+    
+    var playerName = document.getElementById('input-field').value;
+    var inputField = document.getElementById('input-field');
+    
+    if (playerName != "") {
+        var lastScreenInput = document.querySelector(".just-form");
+        var newScore = document.createElement('h4');
+        
+
+        newScore.textContent = playerName;
+        savedScoreArray.push(playerName);
+        //localStorage.setItem("playerName", playerName);
+        localStorage.setItem("saved", JSON.stringify(savedScoreArray));
+        updatedScoreArray = savedScoreArray;
+        console.log (updatedScoreArray);
+        //console.log(savedScoreArray);
+        document.getElementById('saved-scores').appendChild(newScore); 
+        inputField.value = "";
+        lastScreenInput.style.visibility = "hidden";
+    }
+}
+
+function playAgainFunction() {
+    var lastScreenInput = document.querySelector(".just-form");
+    hideScores();
+    lastScreenInput.style.visibility = "visible";
+    hideTime();      
+    showIntro();      
+}
+
+function playAgain() {
+    var playAgainButton = document.getElementById("play-again");
+    playAgainButton.addEventListener("click", playAgainFunction);
+}
+
+
+//All of these are for showing/hiding the different sections
+
 
 //This clears the question
 function clearQuestion() {
@@ -149,51 +213,47 @@ function hideIntro() {
 
 function showQuiz() {
     var quiz = document.querySelector(".quiz-area");
-    var timer = document.querySelector(".timer-box");
+    //var timer = document.querySelector(".timer-box");
     quiz.style.display = "flex";
-    timer.style.display = "flex";
+    //timer.style.display = "flex";
 }
 
 function hideQuiz() {
     var quiz = document.querySelector(".quiz-area");
-    var timer = document.querySelector(".timer-box");
+    //var timer = document.querySelector(".timer-box");
     quiz.style.display = "none";
+    //timer.style.display = "none";
+}
+
+function showTime () {
+    var timer = document.querySelector(".timer-box");
+    timer.style.display = "flex";
+}
+
+function hideTime () {
+    var timer = document.querySelector(".timer-box");
     timer.style.display = "none";
 }
 
+function showScores () {
+    var scores = document.querySelector(".highscores");
+    scores.style.display = "flex";
+}
+
+function hideScores () {
+    var scores = document.querySelector(".highscores");
+    scores.style.display = "none";
+}
+
+// This is the end of the show/hide functions
 
 
 
 
-    //Referencing position in html
-    // var questionElement = getElementById ("question-text");
-    // var choiceOne = getElementById ("choice-one");
-    // var choiceTwo = getElementById ("choice-two");
-    // var choiceThree = getElementById ("choice-three");
-    // var choiceFour = getElementById ("choice-four");
 
 
-    //this will fill the html elements with the corresponding values from each object (aka quiz question)
-    
-    // for (var i=0; i<questionArray.length; i++) {
 
-    // } 
 
-//when user clicks start, timer(done), score set(done), question one is injected
 
-//if click-event target === questionCorrect, 
-    //score goes up
-    //some other feedback that they were correct
-    //clear question
-    //next question
 
-    //else
-        //feedback
-        //time goes down
-        //clear question
-        //next question
-
-//there could be an array of all questionObjects, and when you add a new question you concatenate it to the array
-
-// var questionArray = [];
 
