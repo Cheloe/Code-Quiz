@@ -1,21 +1,9 @@
 # Code-Quiz
 A timed multiple choice coding quiz
 
+<br>
 
-
-
-This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. 
-
-It will have a clean, polished, and responsive user interface. 
-
-
-
-a timed quiz on JavaScript fundamentals that stores high scores
-gauge my progress compared to my peers
-
-<br><br>
-
-## What I did
+## Here's what I did:
 
 1. Created repository, all required files, and committed same
 2. Wrote initial html and CSS
@@ -28,55 +16,37 @@ gauge my progress compared to my peers
 9. Added high score box and styled same (poorly, admittedly)
 10. Created save functionality for scores
 11. Added play-again functionality
-12. 
-
-TO DO
-
-
---add some more questions
-
+12. Made saved scores save and print from local storage.
+13. Created Clear high scores function
+14. Added correct/incorrect feedback
+15. Added a few more questions
+16. Made the timer decrement time when use picks wrong answer
 
 
-start button
-THEN a timer starts and I am presented with a question
-I answer a question
-presented with another question
-answer a question incorrectly
- time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and my score
-
-
-Start button
-timer
-array of questions
-when question == !correct timer loses time
-if all questions are answered game ends
-if time is over game over
-save initials and score (correct/time)
-
-<br><br>
-
-
-### Link to live site
 <br>
 
 
-<br><br>
-
-### Link to GitHub Repository
+### Link to live site:
 <br>
 
+https://cheloe.github.io/Code-Quiz/
 
-<br><br>
-
-### Screenshot of home page
 <br>
 
+### Link to GitHub Repository:
+<br>
+
+https://github.com/Cheloe/Code-Quiz
 
 <br><br>
+
+### Screenshots:
+
+<br>
+
+![Homepage](./assets/Images/Home-page.png)
+
+![Question](./assets/Images/Question.png)
 
 
 
