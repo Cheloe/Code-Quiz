@@ -9,7 +9,7 @@
 } */
 
 header {
-    height: 400px;
+    height: 1000px;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -31,10 +31,10 @@ header p {
     color: rgb(61, 96, 139);
     font-weight: 500;
     font-size:24px;
-    width: 75%;
+    width: auto;
     font-size: 20px;
     margin: 32px;
-    padding: auto;
+    /* padding: auto; */
 }
 
 button {
@@ -104,11 +104,13 @@ container {
 #button-list {
     display: flex;
     flex-direction: column;  
-    align-self: left;
+    /* align-self: left; */
     /* background-color: antiquewhite;  */
     width: 80%;
     margin-bottom: 32px;
-    /* padding: 24px;  */
+    padding-bottom: 48px;
+    border-bottom: 3px solid lightgray;
+    border-radius: 0%;
 }
 
 h2 {
@@ -136,6 +138,19 @@ h2 {
     width: auto;
 }
 
+.feedback h1{
+    text-align: left;
+}
+
+#correct {
+    display: none;
+}
+
+#incorrect {
+    display: none;
+}
+
+
 .highscores {
     /* display: none; */
     flex-direction: column;
@@ -161,10 +176,10 @@ h4 {
     flex-wrap: wrap;
     width: 100%;
     height: 50px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     color: rgb(61, 96, 139);
-    text-align: center;
+    text-align: left;
 }
 
 #saved-scores {
@@ -183,6 +198,7 @@ h4 {
     border-left: none;
     padding: 10px;
     text-align: left;
+    border-radius: 0%;
 }
 
 #save-score {
@@ -191,6 +207,7 @@ h4 {
     margin-top: 24px;
     background-color: hsl(223, 28%, 95%);
     color:rgb(61, 96, 139);
+   
 }
 
 #play-again {
@@ -198,4 +215,10 @@ h4 {
     margin: 0px;
     margin-bottom: 200px;
 
+}
+
+#clear-scores {
+    width: 100%;
+    margin: 0px;
+    margin-bottom: 24px;
 }
